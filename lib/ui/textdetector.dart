@@ -12,19 +12,22 @@ class _TextDetectorState extends State<TextDetector> {
   final picker = ImagePicker();
 
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      children: <Widget>[
-        Text('Deliver features faster'),
-        Text('Craft beautiful UIs'),
-        Expanded(
-          child: FittedBox(
-            fit: BoxFit.contain, // otherwise the logo will be tiny
-            child: const FlutterLogo(),
-          ),
-        ),
-      ],
-    ));
+    return MaterialApp(
+      home: Container(
+          color: Colors.white,
+          child: Column(
+            children: <Widget>[
+              Text('Deliver features faster'),
+              Text('Craft beautiful UIs'),
+              Expanded(
+                child: FittedBox(
+                  fit: BoxFit.contain, // otherwise the logo will be tiny
+                  child: const FlutterLogo(),
+                ),
+              ),
+            ],
+          )),
+    );
   }
 
   // Widget build(BuildContext context) {
