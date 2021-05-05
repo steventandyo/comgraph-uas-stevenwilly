@@ -15,23 +15,52 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
   final picker = ImagePicker();
 
   @override
-  Widget build(BuildContext context) => Row(
+  Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RaisedButton(
-            onPressed: getImageGallery,
-            child: Text('Pick Image'),
-          ),
-          const SizedBox(width: 12),
+              padding: EdgeInsets.all(15),
+              child: Container(
+                width: 100,
+                child: Text("Pick Image", textAlign: TextAlign.center),
+              ),
+              textColor: Colors.white,
+              color: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              onPressed: getImageGallery
+
+              // onPressed: getImageGallery,
+              // child: Text('Pick Image'),
+              ),
+          const SizedBox(height: 15),
           RaisedButton(
-            onPressed: getImage,
-            child: Text('Camera'),
-          ),
+              padding: EdgeInsets.all(15),
+              child: Container(
+                width: 100,
+                child: Text("Camera", textAlign: TextAlign.center),
+              ),
+              textColor: Colors.white,
+              color: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              onPressed: getImage),
+          const SizedBox(height: 15),
           RaisedButton(
-            onPressed: scanText,
-            child: Text('Scan For Text'),
-          ),
-          const SizedBox(width: 12)
+              padding: EdgeInsets.all(15),
+              child: Container(
+                width: 100,
+                child: Text("Scan For Text", textAlign: TextAlign.center),
+              ),
+              textColor: Colors.white,
+              color: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              onPressed: scanText),
+          const SizedBox(height: 15)
         ],
       );
 
@@ -71,7 +100,7 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
   }
 
   Future getImageGallery() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         _image = pickedFile;

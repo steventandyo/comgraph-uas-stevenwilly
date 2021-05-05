@@ -51,6 +51,7 @@ class _MainMenuState extends State<MainMenu> {
                                 onPressed: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
+                                    // return TextDetector2btn();
                                     return TextDetector();
                                   }));
                                 },

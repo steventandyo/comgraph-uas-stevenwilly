@@ -10,35 +10,52 @@ class _TextDetectorState extends State<TextDetector> {
   String _text = '';
   PickedFile _image;
   final picker = ImagePicker();
+
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Text Recognition'),
-          actions: [
-            FlatButton(
-              onPressed: scanText,
-              child: Text(
-                'Scan',
-                style: TextStyle(color: Colors.white),
-              ),
-            )
-          ],
+    return Container(
+        child: Column(
+      children: <Widget>[
+        Text('Deliver features faster'),
+        Text('Craft beautiful UIs'),
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.contain, // otherwise the logo will be tiny
+            child: const FlutterLogo(),
+          ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: getImage,
-          child: Icon(Icons.add_a_photo),
-        ),
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          child: _image != null
-              ? Image.file(
-                  File(_image.path),
-                  fit: BoxFit.fitWidth,
-                )
-              : Container(),
-        ));
+      ],
+    ));
   }
+
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //       appBar: AppBar(
+  //         title: Text('Text Recognition'),
+  //         actions: [
+  //           FlatButton(
+  //             onPressed: scanText,
+  //             child: Text(
+  //               'Scan',
+  //               style: TextStyle(color: Colors.white),
+  //             ),
+  //           )
+  //         ],
+  //       ),
+  //       floatingActionButton: FloatingActionButton(
+  //         onPressed: getImage,
+  //         child: Icon(Icons.add_a_photo),
+  //       ),
+  //       body: Container(
+  //         height: double.infinity,
+  //         width: double.infinity,
+  //         child: _image != null
+  //             ? Image.file(
+  //                 File(_image.path),
+  //                 fit: BoxFit.fitWidth,
+  //               )
+  //             : Container(),
+  //       ));
+  // }
 
   Future scanText() async {
     showDialog(
