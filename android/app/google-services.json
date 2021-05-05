@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "238989047847",
+    "project_id": "comgraph-steven-willy",
+    "storage_bucket": "comgraph-steven-willy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238989047847:android:482b52179a926440ae7602",
+        "android_client_info": {
+          "package_name": "com.example.comgraph_uas_stevwil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238989047847-g1o0rkqnt6u8hqpt9cpvnqj6m882sgt7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDVeiGu4PL8SaPe-rWYpLMhO3bcyVoISk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238989047847-g1o0rkqnt6u8hqpt9cpvnqj6m882sgt7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
