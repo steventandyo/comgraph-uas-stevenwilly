@@ -10,3 +10,4 @@ part 'details.dart';
 part 'facedetector.dart';
 part 'textdetector.dart';
 part 'textdetector2btn.dart';
+part 'photofilter.dart';
