@@ -12,31 +12,120 @@ class _FaceDetectorState extends State<FaceDetector> {
   ui.Image _image;
   final picker = ImagePicker();
 
+  void isloading() {
+    isLoading
+        ? Center(child: CircularProgressIndicator())
+        : (_imageFile == null)
+            ? Center(child: Text('no image selected'))
+            : Center(
+                child: FittedBox(
+                child: SizedBox(
+                  width: _image.width.toDouble(),
+                  height: _image.height.toDouble(),
+                  child: CustomPaint(
+                    painter: FacePainter(_image, _faces),
+                  ),
+                ),
+              ));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: _getImage,
-          child: Icon(Icons.add_a_photo),
-        ),
-        body: isLoading
-            ? Center(child: CircularProgressIndicator())
-            : (_imageFile == null)
-                ? Center(child: Text('no image selected'))
-                : Center(
-                    child: FittedBox(
-                    child: SizedBox(
-                      width: _image.width.toDouble(),
-                      height: _image.height.toDouble(),
-                      child: CustomPaint(
-                        painter: FacePainter(_image, _faces),
-                      ),
+    return MaterialApp(
+      home: Container(
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            new AppBar(
+              title: Text("Face Detector"),
+              backgroundColor: Colors.blue,
+            ),
+            const SizedBox(height: 0),
+            Align(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RaisedButton(
+                    padding: EdgeInsets.all(15),
+                    child: Container(
+                      width: 100,
+                      child: Text("Pick Image", textAlign: TextAlign.center),
                     ),
-                  )));
+                    textColor: Colors.white,
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    onPressed: _getImage,
+
+                    // onPressed: getImageGallery,
+                    // child: Text('Pick Image'),
+                  ),
+                  const SizedBox(height: 15),
+                  RaisedButton(
+                      padding: EdgeInsets.all(15),
+                      child: Container(
+                        width: 100,
+                        child: Text("Camera", textAlign: TextAlign.center),
+                      ),
+                      textColor: Colors.white,
+                      color: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      onPressed: _getImageCamera),
+                  const SizedBox(height: 15),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    // return Scaffold(
+    //     floatingActionButton: FloatingActionButton(
+    //       onPressed: _getImage,
+    //       child: Icon(Icons.add_a_photo),
+    //     ),
+    //     body: isLoading
+    //         ? Center(child: CircularProgressIndicator())
+    //         : (_imageFile == null)
+    //             ? Center(child: Text('no image selected'))
+    //             : Center(
+    //                 child: FittedBox(
+    //                 child: SizedBox(
+    //                   width: _image.width.toDouble(),
+    //                   height: _image.height.toDouble(),
+    //                   child: CustomPaint(
+    //                     painter: FacePainter(_image, _faces),
+    //                   ),
+    //                 ),
+    //               )));
   }
 
   _getImage() async {
     final imageFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      isLoading = true;
+    });
+
+    final image = FirebaseVisionImage.fromFile(File(imageFile.path));
+    final faceDetector = FirebaseVision.instance.faceDetector();
+    List<Face> faces = await faceDetector.processImage(image);
+
+    if (mounted) {
+      setState(() {
+        _imageFile = File(imageFile.path);
+        _faces = faces;
+        _loadImage(File(imageFile.path));
+      });
+    }
+  }
+
+  _getImageCamera() async {
+    final imageFile = await picker.getImage(source: ImageSource.camera);
     setState(() {
       isLoading = true;
     });
