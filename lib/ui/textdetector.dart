@@ -62,7 +62,7 @@ class _TextDetectorState extends State<TextDetector> {
 
   Future scanText() async {
     showDialog(
-        context: context,
+        context: this.context,
         child: Center(
           child: CircularProgressIndicator(),
         ));
@@ -79,8 +79,8 @@ class _TextDetectorState extends State<TextDetector> {
       }
     }
 
-    Navigator.of(context).pop();
-    Navigator.of(context)
+    Navigator.of(this.context).pop();
+    Navigator.of(this.context)
         .push(MaterialPageRoute(builder: (context) => Details(_text)));
   }
 

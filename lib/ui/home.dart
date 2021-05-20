@@ -72,11 +72,32 @@ class _MainMenuState extends State<MainMenu> {
                                 onPressed: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
+                                    // return DetailFaceDetector();
                                     return FaceDetector();
                                   }));
                                 },
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 20),
+                              RaisedButton(
+                                padding: EdgeInsets.all(15),
+                                child: Container(
+                                  width: 100,
+                                  child: Text("Photo Filter",
+                                      textAlign: TextAlign.center),
+                                ),
+                                textColor: Colors.white,
+                                color: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return PhotoFilter();
+                                  }));
+                                },
+                              ),
+                              SizedBox(height: 20),
                               RichText(
                                 text: TextSpan(
                                   text: "Enjoy Our Application",

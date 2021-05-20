@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core: "0.7.0"
+  photofilters: ^1.0.5
   image_picker: ^0.6.7+17
   firebase_ml_vision: ^0.9.10
   clipboard: ^0.1.2+8

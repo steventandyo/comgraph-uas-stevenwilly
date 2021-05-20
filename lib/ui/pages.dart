@@ -4,6 +4,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:clipboard/clipboard.dart';
 import 'dart:io';
 import 'dart:ui' as ui;
+// import 'dart:async';
+import 'package:path/path.dart';
+import 'package:photofilters/photofilters.dart';
+import 'package:image/image.dart' as imageLib;
 
 part 'home.dart';
 part 'details.dart';
@@ -11,3 +15,7 @@ part 'facedetector.dart';
 part 'textdetector.dart';
 part 'textdetector2btn.dart';
 part 'photofilter.dart';
+part 'facedetectorcamera.dart';
+part 'facedetectorgallery.dart';
+part 'photofiltercamera.dart';
+part 'photofiltergallery.dart';

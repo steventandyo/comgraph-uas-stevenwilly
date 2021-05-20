@@ -16,17 +16,16 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Text Detector"),
+      ),
+      body: Container(
           color: Colors.white,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new AppBar(
-                title: Text("Ashiap"),
-                backgroundColor: Colors.blue,
-              ),
-              const SizedBox(height: 0),
+              const SizedBox(height: 100),
               Align(
                 alignment: Alignment.center,
                 child: Column(
@@ -36,8 +35,8 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
                         padding: EdgeInsets.all(15),
                         child: Container(
                           width: 100,
-                          child: Text("Pick Iaefmage",
-                              textAlign: TextAlign.center),
+                          child:
+                              Text("Pick Image", textAlign: TextAlign.center),
                         ),
                         textColor: Colors.white,
                         color: Colors.blue,
@@ -76,106 +75,29 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         onPressed: scanText),
-                    const SizedBox(height: 15)
+                    const SizedBox(height: 15),
+                    RaisedButton(
+                        padding: EdgeInsets.all(15),
+                        child: Container(
+                          width: 100,
+                          child:
+                              Text("Restart Text", textAlign: TextAlign.center),
+                        ),
+                        textColor: Colors.white,
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        onPressed: () {
+                          _reset();
+                        }),
                   ],
                 ),
               ),
-              // RaisedButton(
-              //     padding: EdgeInsets.all(15),
-              //     child: Container(
-              //       width: 100,
-              //       child: Text("Pick Image", textAlign: TextAlign.center),
-              //     ),
-              //     textColor: Colors.white,
-              //     color: Colors.blue,
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //     onPressed: getImageGallery
-
-              //     // onPressed: getImageGallery,
-              //     // child: Text('Pick Image'),
-              //     ),
-              // const SizedBox(height: 15),
-              // RaisedButton(
-              //     padding: EdgeInsets.all(15),
-              //     child: Container(
-              //       width: 100,
-              //       child: Text("Camera", textAlign: TextAlign.center),
-              //     ),
-              //     textColor: Colors.white,
-              //     color: Colors.blue,
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //     onPressed: getImage),
-              // const SizedBox(height: 15),
-              // RaisedButton(
-              //     padding: EdgeInsets.all(15),
-              //     child: Container(
-              //       width: 100,
-              //       child: Text("Scan For Text", textAlign: TextAlign.center),
-              //     ),
-              //     textColor: Colors.white,
-              //     color: Colors.blue,
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //     onPressed: scanText),
-              // const SizedBox(height: 15)
             ],
           )),
     );
   }
-  // @override
-  // Widget build(BuildContext context) => Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         RaisedButton(
-  //             padding: EdgeInsets.all(15),
-  //             child: Container(
-  //               width: 100,
-  //               child: Text("Pick Image", textAlign: TextAlign.center),
-  //             ),
-  //             textColor: Colors.white,
-  //             color: Colors.blue,
-  //             shape: RoundedRectangleBorder(
-  //               borderRadius: BorderRadius.circular(20),
-  //             ),
-  //             onPressed: getImageGallery
-
-  //             // onPressed: getImageGallery,
-  //             // child: Text('Pick Image'),
-  //             ),
-  //         const SizedBox(height: 15),
-  //         RaisedButton(
-  //             padding: EdgeInsets.all(15),
-  //             child: Container(
-  //               width: 100,
-  //               child: Text("Camera", textAlign: TextAlign.center),
-  //             ),
-  //             textColor: Colors.white,
-  //             color: Colors.blue,
-  //             shape: RoundedRectangleBorder(
-  //               borderRadius: BorderRadius.circular(20),
-  //             ),
-  //             onPressed: getImage),
-  //         const SizedBox(height: 15),
-  //         RaisedButton(
-  //             padding: EdgeInsets.all(15),
-  //             child: Container(
-  //               width: 100,
-  //               child: Text("Scan For Text", textAlign: TextAlign.center),
-  //             ),
-  //             textColor: Colors.white,
-  //             color: Colors.blue,
-  //             shape: RoundedRectangleBorder(
-  //               borderRadius: BorderRadius.circular(20),
-  //             ),
-  //             onPressed: scanText),
-  //         const SizedBox(height: 15)
-  //       ],
-  //     );
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
@@ -188,9 +110,19 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
     });
   }
 
+  void _reset() {
+    Navigator.pushReplacement(
+      this.context,
+      PageRouteBuilder(
+        transitionDuration: Duration.zero,
+        pageBuilder: (_, __, ___) => TextDetector2btn(),
+      ),
+    );
+  }
+
   Future scanText() async {
     showDialog(
-        context: context,
+        context: this.context,
         child: Center(
           child: CircularProgressIndicator(),
         ));
@@ -207,8 +139,8 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
       }
     }
 
-    Navigator.of(context).pop();
-    Navigator.of(context)
+    Navigator.of(this.context).pop();
+    Navigator.of(this.context)
         .push(MaterialPageRoute(builder: (context) => Details(_text)));
   }
 
