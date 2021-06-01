@@ -14,7 +14,12 @@ class _TextDetectorState extends State<TextDetector> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Container(
-          color: Colors.white,
+          // constraints: BoxConstraints.expand(),
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //         image: AssetImage("background/bg1.jpg"), fit: BoxFit.cover)),
+
+          color: Colors.blueGrey,
           child: Column(
             children: <Widget>[
               Text('Deliver features faster'),

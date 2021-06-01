@@ -12,11 +12,17 @@ class _MainMenuState extends State<MainMenu> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            title: Text("PhotoPedia"),
-            backgroundColor: Colors.blue,
+            title: Text("WELCOME!"),
+            backgroundColor: Colors.redAccent,
           ),
           body: Container(
-              color: Colors.white,
+              constraints: BoxConstraints.expand(),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("background/bg3.jpg"),
+                      fit: BoxFit.cover)),
+
+              // color: Colors.white,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -39,14 +45,14 @@ class _MainMenuState extends State<MainMenu> {
                               RaisedButton(
                                 padding: EdgeInsets.all(15),
                                 child: Container(
-                                  width: 100,
+                                  width: 200,
                                   child: Text("Text Detector",
                                       textAlign: TextAlign.center),
                                 ),
-                                textColor: Colors.white,
-                                color: Colors.blue,
+                                textColor: Colors.blueGrey,
+                                color: Colors.white70,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 onPressed: () {
                                   Navigator.push(context,
@@ -60,14 +66,14 @@ class _MainMenuState extends State<MainMenu> {
                               RaisedButton(
                                 padding: EdgeInsets.all(15),
                                 child: Container(
-                                  width: 100,
+                                  width: 200,
                                   child: Text("Face Detector",
                                       textAlign: TextAlign.center),
                                 ),
-                                textColor: Colors.white,
-                                color: Colors.blue,
+                                textColor: Colors.blueGrey,
+                                color: Colors.white70,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 onPressed: () {
                                   Navigator.push(context,
@@ -81,14 +87,14 @@ class _MainMenuState extends State<MainMenu> {
                               RaisedButton(
                                 padding: EdgeInsets.all(15),
                                 child: Container(
-                                  width: 100,
+                                  width: 200,
                                   child: Text("Photo Filter",
                                       textAlign: TextAlign.center),
                                 ),
-                                textColor: Colors.white,
-                                color: Colors.blue,
+                                textColor: Colors.blueGrey,
+                                color: Colors.white70,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 onPressed: () {
                                   Navigator.push(context,
@@ -97,14 +103,16 @@ class _MainMenuState extends State<MainMenu> {
                                   }));
                                 },
                               ),
-                              SizedBox(height: 20),
-                              RichText(
-                                text: TextSpan(
-                                  text: "Enjoy Our Application",
-                                  style: TextStyle(
-                                      color: Colors.blue, fontSize: 11),
-                                ),
-                              )
+                              // SizedBox(height: 20),
+                              // RichText(
+                              //   text: TextSpan(
+                              //     text: "Enjoy Our Application",
+                              //     style: TextStyle(
+                              //         color: Colors.lightBlueAccent,
+                              //         fontWeight: FontWeight.w900,
+                              //         fontSize: 25),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ))

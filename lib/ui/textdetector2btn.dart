@@ -19,6 +19,7 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Text Detector"),
+        backgroundColor: Colors.redAccent,
       ),
       body: Container(
           color: Colors.white,
@@ -34,14 +35,14 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
                     RaisedButton(
                         padding: EdgeInsets.all(15),
                         child: Container(
-                          width: 100,
+                          width: 200,
                           child:
                               Text("Pick Image", textAlign: TextAlign.center),
                         ),
-                        textColor: Colors.white,
-                        color: Colors.blue,
+                        textColor: Colors.blueGrey,
+                        color: Colors.white70,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         onPressed: getImageGallery
 
@@ -52,45 +53,65 @@ class _TextDetector2btnState extends State<TextDetector2btn> {
                     RaisedButton(
                         padding: EdgeInsets.all(15),
                         child: Container(
-                          width: 100,
+                          width: 200,
                           child: Text("Camera", textAlign: TextAlign.center),
                         ),
-                        textColor: Colors.white,
-                        color: Colors.blue,
+                        textColor: Colors.blueGrey,
+                        color: Colors.white70,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         onPressed: getImage),
                     const SizedBox(height: 15),
                     RaisedButton(
                         padding: EdgeInsets.all(15),
                         child: Container(
-                          width: 100,
+                          width: 200,
                           child: Text("Scan For Text",
                               textAlign: TextAlign.center),
                         ),
-                        textColor: Colors.white,
-                        color: Colors.blue,
+                        textColor: Colors.blueGrey,
+                        color: Colors.white70,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         onPressed: scanText),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 230),
                     RaisedButton(
                         padding: EdgeInsets.all(15),
                         child: Container(
-                          width: 100,
+                          width: 200,
                           child:
                               Text("Restart Text", textAlign: TextAlign.center),
                         ),
-                        textColor: Colors.white,
-                        color: Colors.blue,
+                        textColor: Colors.red,
+                        color: Colors.white70,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         onPressed: () {
                           _reset();
                         }),
+                    const SizedBox(height: 15),
+                    RaisedButton(
+                      padding: EdgeInsets.all(15),
+                      child: Container(
+                        width: 200,
+                        child: Text("MAIN MENU", textAlign: TextAlign.center),
+                      ),
+                      textColor: Colors.white,
+                      color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return MainMenu();
+                          // return TextDetector();
+                        }));
+                      },
+                    ),
                   ],
                 ),
               ),
